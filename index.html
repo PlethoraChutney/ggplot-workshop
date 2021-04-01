@@ -443,7 +443,10 @@
 						library(dplyr)
 						library(ggplot2)
 						
-						data <- tibble(ID = c('A', 'B', 'C'), Count = c(10, 30, 20))
+						data <- tibble(
+							ID = c('A', 'B', 'C'), 
+							Count = c(10, 30, 20)
+						)
 
 						data %>%
 							ggplot()
@@ -513,7 +516,10 @@
 						library(dplyr)
 						library(ggplot2)
 						
-						data <- tibble(ID = c('A', 'B', 'C'), Count = c(10, 30, 20))
+						data <- tibble(
+							ID = c('A', 'B', 'C'), 
+							Count = c(10, 30, 20)
+						)
 
 						data %>%
 							ggplot(aes(x = ID, y = Count)) +
@@ -541,7 +547,10 @@
 						library(dplyr)
 						library(ggplot2)
 						
-						data <- tibble(ID = c('A', 'B', 'C'), Count = c(10, 30, 20))
+						data <- tibble(
+							ID = c('A', 'B', 'C'), 
+							Count = c(10, 30, 20)
+						)
 
 						data %>%
 							ggplot(aes(x = ID, y = Count)) +
