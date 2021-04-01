@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>ggplot2 - the grammar of graphics</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="css/posert.css" id="theme">
+		<link rel="stylesheet" href="css/an-old-hope.css">
+		<link rel="stylesheet" href="css/presentation.css">
+	</head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+			<div id="container">
+				<div>
+					<img src="static/ggplot_logo.png" alt="">
+				</div>
+				<div>
+					<h1>ggplot</h1>
+					<p>The Grammar of Graphics</p>
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<h2>What is ggplot?</h2>
+		</section>
+		<section data-auto-animate="">
+			<h2>What is ggplot?</h2>
+			<p>
+				ggplot (technically ggplot2) is a library in R which makes
+				graphics using the concept of "graphical grammar"
+			</p>
+			<p class="fragment">
+				There is a whole family of libraries known as the "tidyverse"
+				which play well together
+			</p>
+			<p class="fragment">
+				The tidyverse is <em>opinionated</em>
+			</p>
+		</section>
+		<section>
+			<h2>Graphical Grammar</h2>
+			<p>
+				Describe a graphic by laying out what part of your data defines
+				what part of the graph
+			</p>
+		</section>
+		<section>
+			<h1>But first, let's go over a bit of R</h1>
+		</section>
+		<section>
+			<p>R is an open-source programming language first developed in 1993</p>
+			<p class="fragment">
+				One of the main advantages of using R is its lively community (meaning,
+				you can look things up yourself)
+			</p>
+			<p class='fragment'>
+				Using R can be a bit daunting, but fortunately you don't really need
+				to know much R to use ggplot2 --- but you do need to know the tidyverse
+			</p>
+		</section>
+		<section>
+			<h3>R has four data types:</h2>
+			<ul style="width: 720px;">
+				<li class="fragment">Numbers (ints or floats)</li>
+				<ul class="fragment">
+					<li>1, 2, 3, 4</li>
+					<li>1.00121, 3.1415, 420.69</li>
+				</ul>
+				<li class="fragment">Characters (think of them as strings)</li>
+				<ul class="fragment">
+					<li>"Grad students should be paid more"</li>
+					<li>"The bargaining team should be nicer to management"</li>
+				</ul>
+				<li class="fragment">Factors (one of a defined choice of options)</li>
+				<ul class="fragment">
+					<li>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday</li>
+				</ul>
+				<li class="fragment">Logical (boolean)</li>
+				<ul class='fragment'>
+					<li>TRUE</li>
+					<li>FALSE</li>
+				</ul>
+			</ul>
+		</section>
+		<section data-auto-animate="">
+			<p>
+				To assign a varible in R, you use the "assignment operator" (<code><-</code>)
+			</p>
+			<pre data-id='code-anim'><code class="language-r" data-trim data-line-numbers>
+				> my_variable <- 2 + 2
+			</code></pre>
+		</section>
+		<section data-auto-animate="">
+			<p>
+				To assign a varible in R, you use the "assignment operator" (<code><-</code>)
+			</p>
+			<pre data-id='code-anim'><code class="language-r" data-trim data-line-numbers>
+				> my_variable <- 2 + 2
+				> my_variable
+				[1] 4
+			</code></pre>
+		</section>
+		<section>
+			<p>
+				R is typed
+			</p>
+			<pre><code data-trim class="language-r" data-line-numbers>
+				> 2 + 2
+				[1] 4
+				> 2 + '2'
+				Error in 2 + "2" : non-numeric argument to binary operator
+			</code></pre>
+		</section>
+		<section>
+			<h1>That's all the R you have to know!</h1>
+		</section>
+		<section>
+			<h1>Tidyverse</h1>
+		</section>
+		<section>
+			<p>
+				As mentioned earlier, the tidyverse is opinionated
+			</p>
+			<p>
+				Your data should be in a certain format, and you should
+				user certain types of functions
+			</p>
+			<p>
+				If you accept its ideas about what's right and wrong, it becomes
+				intuitive quickly
+			</p>
+		</section>
+		<section>
+			<p>
+				The authors of the tidyverse insist that each row of your
+				dataset should contain an <em>observation</em>, and each
+				column should be a <em>different type of data</em>.
+			</p>
+			<p class="fragment">
+				Put another way, each row will become a <em>piece of ink on the graph</em>,
+				and each column will provide a <em>way of distinguishing that mark
+				from others</em>.
+			</p>
+		</section>
+		<section data-auto-animate="">
+			<div id="container" data-id="table-comparison">
+				<div style="width: 35%;">
+					<p>How you might format your data for excel:</p>
+					<table data-id="excel-table">
+						<tr class="table-head">
+							<td>Time</td>
+							<td>Sample 1</td>
+							<td>Sample 2</td>
+						</tr>
+						<tr>
+							<td>0.0000</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>0.0001</td>
+							<td>13.1202</td>
+							<td>5.0091</td>
+						</tr>
+					</table>
+				</div>
+				<div style="width: 35%;">
+					<p>How you would format your data for the tidyverse:</p>
+					<table data-id="table-tidy">
+						<tr class="table-head">
+							<td>Time</td>
+							<td>Sample ID</td>
+							<td>Fluorescence</td>
+						</tr>
+						<tr>
+							<td>0.0000</td>
+							<td>1</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>0.0000</td>
+							<td>2</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>0.0001</td>
+							<td>1</td>
+							<td>13.1202</td>
+						</tr>
+						<tr>
+							<td>0.0001</td>
+							<td>2</td>
+							<td>5.0091</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<div id="container" data-id="table-comparison">
+				<div style="width: 35%;">
+					<p>How you might format your data for excel:</p>
+					<table data-id="excel-table">
+						<tr class="table-head">
+							<td>Time</td>
+							<td>Sample 1</td>
+							<td>Sample 2</td>
+						</tr>
+						<tr>
+							<td>0.0000</td>
+							<td>0</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>0.0001</td>
+							<td>13.1202</td>
+							<td>5.0091</td>
+						</tr>
+					</table>
+				</div>
+				<div style="width: 35%;">
+					<p>How you would format your data for the tidyverse:</p>
+					<table data-id="table-tidy">
+						<tr class="table-head">
+							<td>Time</td>
+							<td>Sample ID</td>
+							<td>Fluorescence</td>
+						</tr>
+						<tr>
+							<td>0.0000</td>
+							<td>1</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>0.0000</td>
+							<td>2</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>0.0001</td>
+							<td>1</td>
+							<td>13.1202</td>
+						</tr>
+						<tr>
+							<td>0.0001</td>
+							<td>2</td>
+							<td>5.0091</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<p>
+				We now can describe components of the graph in terms of columns
+				in our data frame
+			</p>
+		</section>
+      </div>
+    </div>
+
+
+    <script src="dist/reveal.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				center: true,
+				hash: true,
+				controls: false,
+				width: 1200,
+				slideNumber: 'c/t',
+				plugins: [ RevealHighlight ]
+			});
+		</script>
+  </body>
+</html>
