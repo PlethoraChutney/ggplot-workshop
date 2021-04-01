@@ -138,24 +138,22 @@
 		</section>
 		<section data-auto-animate="">
 			<h2>Pipes make your code easier to write and understand</h2>
-			<p>
+			<blockquote data-id="kesha">
 				Wake up in the mornin' feelin' like P Diddy
-			</p>
-			<p>
+				</br>
 				Grab my glasses, I'm out the door, I'm gonna hit this city
-			</p>
-			<pre style="max-width: 1900px;"><code data-trim class="language-r">
+			</blockquote>
+			<pre style="max-width: 1900px;" class="fragment"><code data-trim class="language-r">
 				hit(walk(grab(feel(wake_up(me, time = 'morning'), like = 'P Diddy'), object = 'my glasses'), direction = 'out', destination = 'door') target = 'this city')
 			</code></pre>
 		</section>
 		<section data-auto-animate="">
 			<h2>Pipes make your code easier to write and understand</h2>
-			<p>
+			<blockquote data-id="kesha">
 				Wake up in the mornin' feelin' like P Diddy
-			</p>
-			<p>
+				</br>
 				Grab my glasses, I'm out the door, I'm gonna hit this city
-			</p>
+			</blockquote>
 			<pre style="max-width: 1900px;"><code data-trim class="language-r">
 				hit(walk(grab(feel(wake_up(me, time = 'morning'), like = 'P Diddy'), object = 'my glasses'), direction = 'out', destination = 'door') target = 'this city')
 			</code></pre>
@@ -198,6 +196,7 @@
 			</div>
 		</section>
 		<section data-auto-animate="">
+			<h2>Formatting your data</h2>
 			<div id="container" data-id="table-comparison">
 				<div style="width: 40%;">
 					<p>How you might format your data for excel:</p>
@@ -218,8 +217,13 @@
 							<td>5.0091</td>
 						</tr>
 					</table>
+					<p>
+						You (and excel) have to just <em>know</em> that the
+						numbers represent fluorescence, and should go on the X axis,
+						separated by color
+					</p>
 				</div>
-				<div style="width: 40%;">
+				<div style="width: 40%;" class="fragment">
 					<p>How you would format your data for the tidyverse:</p>
 					<table class = 'booktab' data-id="table-tidy">
 						<tr class="table-head">
@@ -252,6 +256,7 @@
 			</div>
 		</section>
 		<section data-auto-animate="">
+			<h2>Formatting your data</h2>
 			<div id="container" data-id="table-comparison">
 				<div style="width: 40%;">
 					<p>How you might format your data for excel:</p>
@@ -311,6 +316,72 @@
 			<p class="fragment">
 				This makes it easy to add more information later, since we just
 				consider more columns
+			</p>
+		</section>
+		<section data-auto-animate="">
+			<h2>Formatting your data</h2>
+			<table class='booktab' data-id="table-tidy">
+				<tr class="table-head">
+					<td>Time</td>
+					<td>Sample ID</td>
+					<td>Fluorescence</td>
+					<td>Detergent</td>
+				</tr>
+				<tr>
+					<td>0.0000</td>
+					<td>1</td>
+					<td>0</td>
+					<td>Digitonin</td>
+				</tr>
+				<tr>
+					<td>0.0000</td>
+					<td>1</td>
+					<td>0</td>
+					<td>C12M</td>
+				</tr>
+				<tr>
+					<td>0.0000</td>
+					<td>2</td>
+					<td>0</td>
+					<td>Digitonin</td>
+				</tr>
+				<tr>
+					<td>0.0000</td>
+					<td>2</td>
+					<td>0</td>
+					<td>C12M</td>
+				</tr>
+				<tr>
+					<td>0.0001</td>
+					<td>1</td>
+					<td>12.0125</td>
+					<td>Digitonin</td>
+				</tr>
+				<tr>
+					<td>0.0001</td>
+					<td>1</td>
+					<td>6.5368</td>
+					<td>C12M</td>
+				</tr>
+				<tr>
+					<td>0.0001</td>
+					<td>2</td>
+					<td>207.13</td>
+					<td>Digitonin</td>
+				</tr>
+				<tr>
+					<td>0.0001</td>
+					<td>2</td>
+					<td>0.0021</td>
+					<td>C12M</td>
+				</tr>
+			</table>
+			<p>
+				Adding a variable in long format adds one column
+			</p>
+			<p>
+				Adding a variable in wide format multiplies the existing
+				columns by the levels of the new variable.
 			</p>
 		</section>
 		<section>
@@ -613,6 +684,13 @@
 					<img src="static/filtered_plot.png" alt="" style="width: 100%;">
 				</div>
 			</div>
+		</section>
+		<section>
+			<h2>Let's practice!</h2>
+			<p>If this were a full class, we'd spend more time here, but it's not!</p>
+			<a href="https://github.com/PlethoraChutney/ggplot-workshop-practice">
+				https://github.com/PlethoraChutney/ggplot-workshop-practice
+			</a>
 		</section>
       </div>
     </div>
