@@ -125,6 +125,51 @@
 			<h1>Tidyverse</h1>
 		</section>
 		<section>
+			<p>The most important tidyverse function:</p>
+			<h1 class="r-fit-text">%>%</h1>
+		</section>
+		<section>
+			<h2>The pipe operator (%>%)</h2>
+			<p>
+				The pipe operator is from the dplyr package, and
+				lets you send the output of one function to the first
+				input of a subsequent function
+			</p>
+		</section>
+		<section data-auto-animate="">
+			<h2>Pipes make your code easier to write and understand</h2>
+			<p>
+				Wake up in the mornin' feelin' like P Diddy
+			</p>
+			<p>
+				Grab my glasses, I'm out the door, I'm gonna hit this city
+			</p>
+			<pre style="max-width: 1900px;"><code data-trim class="language-r">
+				hit(walk(grab(feel(wake_up(me, time = 'morning'), like = 'P Diddy'), object = 'my glasses'), direction = 'out', destination = 'door') target = 'this city')
+			</code></pre>
+		</section>
+		<section data-auto-animate="">
+			<h2>Pipes make your code easier to write and understand</h2>
+			<p>
+				Wake up in the mornin' feelin' like P Diddy
+			</p>
+			<p>
+				Grab my glasses, I'm out the door, I'm gonna hit this city
+			</p>
+			<pre style="max-width: 1900px;"><code data-trim class="language-r">
+				hit(walk(grab(feel(wake_up(me, time = 'morning'), like = 'P Diddy'), object = 'my glasses'), direction = 'out', destination = 'door') target = 'this city')
+			</code></pre>
+			<pre><code data-trim class="language-r">
+				me %>%
+					wake_up(time = 'morning') %>%
+					feel(like = 'P Diddy') %>%
+					grab(object = 'my glasses') %>%
+					walk(direction = 'out', destimation = 'door') %>%
+					hit(target = 'this city')
+			</code></pre>
+		</section>
+		<section>
+			<h2>Formatting your data</h2>
 			<p>
 				As mentioned earlier, the tidyverse is opinionated
 			</p>
@@ -138,6 +183,8 @@
 			</p>
 		</section>
 		<section>
+			<h2>Formatting your data</h2>
+			<div>
 			<p>
 				The authors of the tidyverse insist that each row of your
 				dataset should contain an <em>observation</em>, and each
@@ -148,12 +195,13 @@
 				and each column will provide a <em>way of distinguishing that mark
 				from others</em>.
 			</p>
+			</div>
 		</section>
 		<section data-auto-animate="">
 			<div id="container" data-id="table-comparison">
-				<div style="width: 35%;">
+				<div style="width: 40%;">
 					<p>How you might format your data for excel:</p>
-					<table data-id="excel-table">
+					<table class = 'booktab' data-id="excel-table">
 						<tr class="table-head">
 							<td>Time</td>
 							<td>Sample 1</td>
@@ -171,9 +219,9 @@
 						</tr>
 					</table>
 				</div>
-				<div style="width: 35%;">
+				<div style="width: 40%;">
 					<p>How you would format your data for the tidyverse:</p>
-					<table data-id="table-tidy">
+					<table class = 'booktab' data-id="table-tidy">
 						<tr class="table-head">
 							<td>Time</td>
 							<td>Sample ID</td>
@@ -205,9 +253,9 @@
 		</section>
 		<section data-auto-animate="">
 			<div id="container" data-id="table-comparison">
-				<div style="width: 35%;">
+				<div style="width: 40%;">
 					<p>How you might format your data for excel:</p>
-					<table data-id="excel-table">
+					<table class='booktab' data-id="excel-table">
 						<tr class="table-head">
 							<td>Time</td>
 							<td>Sample 1</td>
@@ -225,9 +273,9 @@
 						</tr>
 					</table>
 				</div>
-				<div style="width: 35%;">
+				<div style="width: 40%;">
 					<p>How you would format your data for the tidyverse:</p>
-					<table data-id="table-tidy">
+					<table class='booktab' data-id="table-tidy">
 						<tr class="table-head">
 							<td>Time</td>
 							<td>Sample ID</td>
@@ -260,6 +308,311 @@
 				We now can describe components of the graph in terms of columns
 				in our data frame
 			</p>
+			<p class="fragment">
+				This makes it easy to add more information later, since we just
+				consider more columns
+			</p>
+		</section>
+		<section>
+			<h1>Building a graphic</h1>
+		</section>
+		<section data-auto-animate="">
+			<h2>Start by loading your libraries</h2>
+			<div id="container">
+				<div style="width: 45%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+					</code></pre>
+				</div>
+				<div style="width: 45%;" data-id="image">
+					
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<h2>Then make a coordinate system</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						ggplot()
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/coord-blank.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<h2>Then make a coordinate system</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						ggplot()
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/coord-blank.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+			<p>It's blank because we don't have any data in it!</p>
+			<p class="fragment">We can pipe data into the ggplot() call</p>
+		</section>
+		<section data-auto-animate="">
+			<h2>Make some data and pipe it into your ggplot call</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						data <- tibble(ID = c('A', 'B', 'C'), Count = c(10, 30, 20))
+
+						data %>%
+							ggplot()
+					</code></pre>
+
+					<pre data-id="data"><code class="language-r" data-trim>
+						> data
+						# A tibble: 3 x 2
+						  ID    Count
+						1 A        10
+						2 B        30
+						3 C        20  
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/coord-blank.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+		</section>
+		<section>
+			<h2>Aesthetics and Geoms</h2>
+			<p>
+				Geoms are what actually make up the graphs: lines, points, bars,
+				histograms, etc.
+			</p>
+			<p>
+				Aesthetics are how we tell the geoms what data goes where (x, y, color)
+			</p>
+		</section>
+		<section>
+			<h2>Aesthetics and Geoms</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<table class="booktab" style="width: 100%;">
+						<tr class="table-head">
+							<td>ID</td>
+							<td>Count</td>
+						</tr>
+						<tr>
+							<td>'A'</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>'B'</td>
+							<td>30</td>
+						</tr>
+						<tr>
+							<td>'C'</td>
+							<td>20</td>
+						</tr>
+					</table>
+				</div>
+				<div style="width: 40%;">
+					<p>
+						So with our data, we want to set the x aesthetic
+						to ID, and the y aesthetic to Count, then add an
+						appropriate geom
+					</p>
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<h2>The Basic Plot</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						data <- tibble(ID = c('A', 'B', 'C'), Count = c(10, 30, 20))
+
+						data %>%
+							ggplot(aes(x = ID, y = Count)) +
+							geom_col()
+					</code></pre>
+					<pre data-id="data"><code class="language-r" data-trim>
+						> data
+						# A tibble: 3 x 2
+						  ID    Count
+						1 A        10
+						2 B        30
+						3 C        20  
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/basic-plot.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<h2>Plot Customization</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						data <- tibble(ID = c('A', 'B', 'C'), Count = c(10, 30, 20))
+
+						data %>%
+							ggplot(aes(x = ID, y = Count)) +
+							geom_col(aes(fill = ID)) +
+							theme_minimal() +
+							xlab('Participant ID') +
+							ylab('Beans counted')
+					</code></pre>
+					<pre data-id="data"><code class="language-r" data-trim>
+						> data
+						# A tibble: 3 x 2
+						  ID    Count
+						1 A        10
+						2 B        30
+						3 C        20  
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/custom-plot.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+			<p>
+				Aesthetics can be set for the whole plot in ggplot(), or for individual
+				elements in their respective geom_*() calls
+			</p>
+		</section>
+		<section data-auto-animate="">
+			<h2>Advanced plots</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						data <- tibble(
+							ID = c('A', 'B', 'C', 'A', 'B', 'C'),
+							Count = c(10, 30, 20, 5, 10, 55),
+							bean_type = c(rep('Pinto', 3), rep('Kidney', 3))
+						)
+
+						data %>%
+							ggplot(aes(x = ID, y = Count)) +
+							geom_col(aes(fill = ID)) +
+							theme_minimal() +
+							xlab('Participant ID') +
+							ylab('Beans counted') +
+							facet_grid(rows = vars(bean_type))
+					</code></pre>
+					<pre data-id="data"><code class="language-r" data-trim>
+						> data
+						# A tibble: 6 x 3
+						  ID    Count bean_type
+						1 A        10 Pinto    
+						2 B        30 Pinto    
+						3 C        20 Pinto    
+						4 A         5 Kidney   
+						5 B        10 Kidney   
+						6 C        55 Kidney   
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/advanced_plot.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<h2>Advanced plots</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						data <- tibble(
+							ID = c('A', 'B', 'C', 'A', 'B', 'C'),
+							Count = c(10, 30, 20, 5, 10, 55),
+							bean_type = c(rep('Pinto', 3), rep('Kidney', 3))
+						)
+
+						data %>%
+							ggplot(aes(x = bean_type, y = Count)) +
+							geom_col(aes(fill = ID)) +
+							theme_minimal() +
+							xlab('Bean Type') +
+							ylab('Beans counted') +
+							facet_grid(cols = vars(ID))
+					</code></pre>
+					<pre data-id="data"><code class="language-r" data-trim>
+						> data
+						# A tibble: 6 x 3
+						  ID    Count bean_type
+						1 A        10 Pinto    
+						2 B        30 Pinto    
+						3 C        20 Pinto    
+						4 A         5 Kidney   
+						5 B        10 Kidney   
+						6 C        55 Kidney   
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/alt_advanced_plot.png" alt="" style="width: 100%;">
+				</div>
+			</div>
+		</section>
+		<section data-auto-animate="">
+			<h2>Filter your data</h2>
+			<div id="container">
+				<div style="width: 40%;">
+					<pre data-id="code-half"><code class="language-r" data-line-numbers="" data-trim>
+						library(dplyr)
+						library(ggplot2)
+						
+						data <- tibble(
+							ID = c('A', 'B', 'C', 'A', 'B', 'C'),
+							Count = c(10, 30, 20, 5, 10, 55),
+							bean_type = c(rep('Pinto', 3), rep('Kidney', 3))
+						)
+
+						data %>%
+							filter(ID == 'A' | ID == 'B') %>%
+							ggplot(aes(x = bean_type, y = Count)) +
+							geom_point(aes(color = ID), size = 7) +
+							theme_minimal() +
+							xlab('Bean Type') +
+							ylab('Beans counted') +
+							expand_limits(y = 0)
+					</code></pre>
+					<pre data-id="data"><code class="language-r" data-trim>
+						> data %>%
+						+ filter(ID == 'A' | ID == 'B')
+						# A tibble: 4 x 3
+						  ID    Count bean_type
+						1 A        10 Pinto    
+						2 B        30 Pinto    
+						3 A         5 Kidney   
+						4 B        10 Kidney 
+					</code></pre>
+				</div>
+				<div style="width: 40%;" data-id="image">
+					<img src="static/filtered_plot.png" alt="" style="width: 100%;">
+				</div>
+			</div>
 		</section>
       </div>
     </div>
@@ -272,7 +625,7 @@
 				center: true,
 				hash: true,
 				controls: false,
-				width: 1200,
+				width: 1300,
 				slideNumber: 'c/t',
 				plugins: [ RevealHighlight ]
 			});

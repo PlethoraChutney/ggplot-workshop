@@ -12,6 +12,8 @@
     align-items: center;
 }
 
-.table-head {
+.table-head td{
     font-weight: bold;
+    border-bottom-style: solid;
+    border-width: 1px;
 }

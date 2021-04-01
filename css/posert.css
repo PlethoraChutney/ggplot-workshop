@@ -86,10 +86,10 @@
   font-size: 5em; }
 
 .reveal h2 {
-  font-size: 4em; }
+  font-size: 3em; }
 
 .reveal h3 {
-  font-size: 3em; }
+  font-size: 2.5em; }
 
 .reveal h4 {
   font-size: 2em; }
@@ -101,7 +101,7 @@
  * OTHER
  *********************************************/
 .reveal p {
-  margin: 20px 0;
+  margin: 10px;
   line-height: 1.4; }
 
 /* Remove trailing margins after titles */
@@ -205,19 +205,23 @@
   max-height: 400px;
   word-wrap: normal; }
 
-.reveal table {
+.reveal table.booktab {
   margin: auto;
-  border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0; 
+  background-color: white;
+  padding: 10px;
+  border-style: solid;
+  border-color: #000;
+}
 
 .reveal table th {
-  font-weight: bold; }
+  font-weight: bold;}
 
 .reveal table th,
 .reveal table td {
   text-align: left;
   padding: 0.2em 0.5em 0.2em 0.5em;
-  border-bottom: 1px solid; }
+}
 
 .reveal table th[align="center"],
 .reveal table td[align="center"] {
